@@ -11,9 +11,9 @@ app.app_context().push()
 class Quiz(db.Model):
     sno = db.Column(db.Integer , primary_key = True)
     name = db.Column(db.String(200) , nullable = False)
-    time = db.Column(db.String(500) , nullable = False)
+     time = db.Column(db.String(500) , nullable = False)
     last_date = db.Column(db.DateTime , default = datetime.now)
-    
+
 
     def __repr__(self) -> str:
         return f"{self.name} - {self.time} - {self.last_date}"
@@ -31,7 +31,6 @@ def HomePage():
 def Quizpanel():
     allquizes = Quiz.query.all()
     return render_template('quizpanel.html' , allquizes=allquizes)
-
 @app.route("/Managequiz")
 def Managequiz():
     allquizes = Quiz.query.all()
